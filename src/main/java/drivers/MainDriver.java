@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 import drivers.Task1Driver;
+import drivers.Task2Driver;
 
 public class MainDriver {
     private static boolean result1 = false;
@@ -54,6 +55,7 @@ public class MainDriver {
                     terminate = true;
             }
         }
+        in.close();
 
         System.out.println("\n\nAll tasks completed successfully!");
         //System.exit(job.waitForCompletion(true) ? 0 : 1);
@@ -63,14 +65,14 @@ public class MainDriver {
         if(!result1)
             result1 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task1");
         if(!result2)
-            result2 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task2");
-        if(!result3)
-            result3 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task3");
-        if(!result4)
-            result4 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task4");
-        if(!result5)
-            result5 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task5");
-        if(!result6)
-            result6 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task6");
+            result2 = Task2Driver.run(args[0], args[1] + File.pathSeparator + "task2");
+        // if(!result3)
+        //     result3 = Task3Driver.run(args[0], args[1] + File.pathSeparator + "task3");
+        // if(!result4)
+        //     result4 = Task4Driver.run(args[0], args[1] + File.pathSeparator + "task4");
+        // if(!result5)
+        //     result5 = Task5Driver.run(args[0], args[1] + File.pathSeparator + "task5");
+        // if(!result6)
+        //     result6 = Task6Driver.run(args[0], args[1] + File.pathSeparator + "task6");
     }
 }

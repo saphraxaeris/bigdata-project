@@ -8,22 +8,22 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 
-public class Task1Driver {
-    private static Task1Driver _instance;
+public class Task2Driver {
+    private static Task2Driver _instance;
 
     public static boolean run(String inputPath, String outputPath) {
         if(_instance == null)
-            _instance = new Task1Driver();
+            _instance = new Task2Driver();
 
         try {
             Job job = new Job();
-            job.setJarByClass(drivers.Task1Driver.class);
-            job.setJobName("Task 1");
+            job.setJarByClass(drivers.Task2Driver.class);
+            job.setJobName("Task 2");
 
             FileInputFormat.addInputPath(job, new Path(inputPath));
             FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
-            job.setMapperClass(mappers.CountKeyWordsMapper.class);
+            job.setMapperClass(mappers.CountAllWordsMapper.class);
             job.setReducerClass(reducers.CountWordsReducer.class);
             job.setCombinerClass(reducers.CountWordsReducer.class);
 
@@ -33,7 +33,7 @@ public class Task1Driver {
             return job.waitForCompletion(true);
         }
         catch(Exception ex) {
-            System.out.println("There was an error completing Task 1.");
+            System.out.println("There was an error completing Task 2.");
             return false;
         }
     }
