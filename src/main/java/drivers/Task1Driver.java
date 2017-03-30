@@ -16,7 +16,7 @@ public class Task1Driver {
             _instance = new Task1Driver();
 
         try {
-            Job job = new Job();
+            Job job = Job.getInstance();
             job.setJarByClass(drivers.Task1Driver.class);
             job.setJobName("Task 1");
 
