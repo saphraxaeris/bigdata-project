@@ -2,6 +2,7 @@ package drivers;
 
 import java.io.File;
 import java.util.Scanner;
+import org.apache.hadoop.mapreduce.Job;
 
 import drivers.Task1Driver;
 import drivers.Task2Driver;
@@ -64,17 +65,19 @@ public class MainDriver {
     }
 
     private static void runTasks(String[] args) {
+        Job job = Job.getInstance();
+
         if(!result1)
-            result1 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task1");
+            result1 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task1", job);
         if(!result2)
-            result2 = Task2Driver.run(args[0], args[1] + File.pathSeparator + "task2");
+            result2 = Task2Driver.run(args[0], args[1] + File.pathSeparator + "task2", job);
         if(!result3)
-            result3 = Task3Driver.run(args[0], args[1] + File.pathSeparator + "task3");
+            result3 = Task3Driver.run(args[0], args[1] + File.pathSeparator + "task3", job);
         if(!result4)
-            result4 = Task4Driver.run(args[0], args[1] + File.pathSeparator + "task4");
+            result4 = Task4Driver.run(args[0], args[1] + File.pathSeparator + "task4", job);
         if(!result5)
-            result5 = Task5Driver.run(args[0], args[1] + File.pathSeparator + "task5");
+            result5 = Task5Driver.run(args[0], args[1] + File.pathSeparator + "task5", job);
         if(!result6)
-            result6 = Task6Driver.run(args[0], args[1] + File.pathSeparator + "task6");
+            result6 = Task6Driver.run(args[0], args[1] + File.pathSeparator + "task6", job);
     }
 }

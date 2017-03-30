@@ -10,12 +10,11 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class Task6Driver {
     private static Task6Driver _instance;
 
-    public static boolean run(String inputPath, String outputPath) {
+    public static boolean run(String inputPath, String outputPath, Job job) {
         if(_instance == null)
             _instance = new Task6Driver();
 
         try {
-            Job job = new Job();
             job.setJarByClass(drivers.Task6Driver.class);
             job.setJobName("Task 6");
 
