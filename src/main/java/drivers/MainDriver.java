@@ -77,10 +77,10 @@ public class MainDriver {
             output.close();
             
             System.out.println("Massaging Task 2 result...");
-            local = new Path("downloads/part-r-000002");
+            //local = new Path("downloads/part-r-000002");
             hdfs = new Path(path + "/task2/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
-            File task2Data = new File("downloads/part-r-000002");
+            File task2Data = new File("downloads/part-r-00000");
             Scanner task2File = new Scanner(task2Data);
             outputText = "var task2Data = [";
             while(task2File.hasNext()) {
@@ -95,10 +95,10 @@ public class MainDriver {
             task2File.close();
 
             System.out.println("Massaging Task 3 result...");
-            local = new Path("downloads/part-r-000003");
+            //local = new Path("downloads/part-r-000003");
             hdfs = new Path(path + "/task3/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
-            File task3Data = new File("downloads/part-r-000003");
+            File task3Data = new File("downloads/part-r-00000");
             Scanner task3File = new Scanner(task3Data);
             outputText = "var task3Data = [";
             while(task3File.hasNext()) {
