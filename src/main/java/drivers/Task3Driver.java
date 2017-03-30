@@ -2,6 +2,7 @@ package drivers;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -26,7 +27,7 @@ public class Task3Driver {
             job.setCombinerClass(reducers.FindUsernamesReducer.class);
 
             job.setOutputKeyClass(Text.class);
-            job.setOutputValueClass(Text.class);
+            job.setOutputValueClass(IntWritable.class);
 
             return job.waitForCompletion(true);
         }

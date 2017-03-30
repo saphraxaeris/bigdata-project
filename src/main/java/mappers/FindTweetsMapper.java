@@ -8,7 +8,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterObjectFactory;
 import java.io.IOException;
 
-public class FindTweetsMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
+public class FindTweetsMapper extends Mapper<LongWritable, Text, Text, Text> {
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String rawTweet = value.toString();
@@ -18,7 +18,7 @@ public class FindTweetsMapper extends Mapper<LongWritable, Text, Text, LongWrita
             String screenName = status.getUser().getScreenName();
             long tweetId = status.getId();
         
-            context.write(new Text(screenName), new LongWritable(tweetId));
+            context.write(new Text(screenName), new Text(tweetId + ""));
         }
         catch(TwitterException e) { /* Do nothing */ }
     }

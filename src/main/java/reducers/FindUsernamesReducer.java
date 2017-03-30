@@ -6,10 +6,13 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class FindUsernamesReducer extends Reducer<Text, IntWritable, Text, Text> {
+public class FindUsernamesReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context)
             throws IOException, InterruptedException {
-        context.write(key, new Text(""));
+        int count = 0;
+        for(IntWritable temp : values)
+            count++;
+        context.write(key, new IntWritable(count));
     }
 }

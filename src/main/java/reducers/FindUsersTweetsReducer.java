@@ -6,12 +6,12 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class FindUsersTweetsReducer extends Reducer<Text, LongWritable, Text, Text> {
+public class FindUsersTweetsReducer extends Reducer<Text, Text, Text, Text> {
     @Override
-    protected void reduce(Text key, Iterable<LongWritable> values, Context context)
+    protected void reduce(Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
         String list = "";
-        for(LongWritable id : values) {
+        for(Text id : values) {
             list += id.toString() + ", ";
         }
         list.substring(0, list.length()-3);
