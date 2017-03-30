@@ -55,7 +55,7 @@ public class MainDriver {
             System.out.println("Connecting to HDFS...");
             Configuration conf = new Configuration();
             FileSystem hdfsFileSystem = FileSystem.get(conf);
-            Path local = new Path("download/");
+            Path local = new Path("downloads/part-r-00000");
 
             System.out.println("Getting Task 1 result...");
             Path hdfs = new Path(path + "/task1/part-r-00000");
@@ -63,7 +63,7 @@ public class MainDriver {
 
             //Massage Data for JS
             System.out.println("Massaging Task 1 result...");
-            File task1Data = new File("download/part-r-00000");
+            File task1Data = new File("downloads/part-r-00000");
             Scanner task1File = new Scanner(task1Data);
             String outputText = "var task1Data = [";
             while(task1File.hasNext()) {
