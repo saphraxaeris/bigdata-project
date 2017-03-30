@@ -1,1 +1,0 @@
-var task3Data = [{username: 'Change', count: 488},{username: 'Dictator', count: 171},{username: 'Drain', count: 118},{username: 'Impeach', count: 214},{username: 'MAGA', count: 1458},{username: 'Swamp', count: 142},{username: 'Trump', count: 59904}];
