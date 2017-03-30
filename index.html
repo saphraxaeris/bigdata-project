@@ -20,7 +20,25 @@
     <div class="row well" style="margin-top: 20px;">
         <div class="col-md-12">
             <h1 style="border-bottom: 1px solid dimgray;">Task 1</h1>
+            <p id="task1Text" style="font-size: 1.8rem"></p>
+            <small>(For some reason "Trump" appears really small comapred to the rest even thought it should be the largest word.)</small>
             <div id="graph1"></div>
+        </div>
+    </div>
+
+    <div class="row well" style="margin-top: 20px;">
+        <div class="col-md-12">
+            <h1 style="border-bottom: 1px solid dimgray;">Task 2</h1>
+            <p id="task2Text" style="font-size: 1.8rem"></p>
+            <div id="graph2"></div>
+        </div>
+    </div>
+
+    <div class="row well" style="margin-top: 20px;">
+        <div class="col-md-12">
+            <h1 style="border-bottom: 1px solid dimgray;">Task 3</h1>
+            <p id="task3Text" style="font-size: 1.8rem"></p>
+            <div id="graph3"></div>
         </div>
     </div>
 
@@ -34,33 +52,74 @@
 <script src="d3.layout.cloud.js"></script>
 <script src="d3.wordcloud.js"></script>
 <script src="results/task1.js"></script>
-
+<script src="results/task2.js"></script>
+<script src="results/task3.js"></script>
+<!--<script src="results/task4.js"></script>
+<script src="results/task5.js"></script>
+<script src="results/task6.js"></script>-->
 
 <script>
   $(function() {
+    //Task 1 presentation
     d3.wordcloud()
-        .size([500, 300])
+        .size([800, 800])
         .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
         .selector('#graph1')
         .words(task1Data)
         .start();
+    var text = "";
+    task1Data.forEach(function(item){
+        text += item.text + ": " + item.size + ", ";
+    });
+    $('#task1Text').text(text);
 
-    // var reader = new FileReader();
-    //     reader.onload = function(){
-    //       var words = reader.result.split(/(\r\n|\n)/g);
-    //       //var words = rawFile.responseText.split(/(\r\n|\n)/g);
-    //             words.forEach(function(item, index){
-    //                 var values = item.split(" ");
-    //                 words[index] = {text: values[0], size: values[1]};
-    //             });
-    //             d3.wordcloud()
-    //             .size([500, 300])
-    //             .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
-    //             .selector('#graph1')
-    //             .words(words)
-    //             .start();
-    //     };
-    //     reader.readAsText(new File("results/task1/part-r-00000"));
+    //Task 2 presentation
+    d3.wordcloud()
+        .size([800, 800])
+        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+        .selector('#graph2')
+        .words(task2Data)
+        .start();
+    text = "";
+    task2Data.forEach(function(item){
+        text += item.text + ": " + item.size + ", ";
+    });
+    $('#task2Text').text(text);
+
+    //Task 3 presentation
+    var colorIndex = 0;
+    var colors = ["#e7fdca", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
+    var circles = [];
+    var x = 0;
+    var y = 0;
+    task3Data.forEach(function(item){
+        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 15, color:colors[colorIndex]});
+        if(x < 800)
+            x += 30;
+        else {
+            x = 0;
+            y += 30;
+        }
+        colorIndex = (colorIndex+1)%6;
+    });
+
+    var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 200)
+                                    .attr("height", 200);
+
+    var circlesStuff = svgContainer.selectAll("circle")
+                          .data(jsonCircles)
+                          .enter()
+                          .append("circle");
+
+    var circleAttributes = circlesStuff
+                       .attr("cx", function (d) { return d.x_axis; })
+                       .attr("cy", function (d) { return d.y_axis; })
+                       .attr("r", function (d) { return d.radius; })
+                       .style("fill", function(d) { return d.color; });
+    elemEnter.append("text")
+        .attr("dx", function(d){return -20})
+        .text(function(d){return d.text})
   });
 
 </script>

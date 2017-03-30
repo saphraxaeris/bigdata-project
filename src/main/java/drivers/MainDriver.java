@@ -61,7 +61,6 @@ public class MainDriver {
             Path hdfs = new Path(path + "/task1/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
 
-            //Massage Data for JS
             System.out.println("Massaging Task 1 result...");
             File task1Data = new File("downloads/part-r-00000");
             Scanner task1File = new Scanner(task1Data);
@@ -77,6 +76,35 @@ public class MainDriver {
             output.write(outputText);
             output.close();
             
+            System.out.println("Massaging Task 2 result...");
+            File task2Data = new File("downloads/part-r-00000");
+            Scanner task2File = new Scanner(task2Data);
+            outputText = "var task2Data = [";
+            while(task2File.hasNext()) {
+                outputText += "{text: '" + task2File.next() + "', size: " + task2File.next() + "},";
+            }
+            outputText = outputText.substring(0, outputText.length()-1);
+            outputText += "];";
+            outputFile = new File("results/task2.js");
+            output = new PrintWriter(outputFile);
+            output.write(outputText);
+            output.close();
+            task2File.close();
+
+            System.out.println("Massaging Task 3 result...");
+            File task3Data = new File("downloads/part-r-00000");
+            Scanner task3File = new Scanner(task3Data);
+            outputText = "var task3Data = [";
+            while(task3File.hasNext()) {
+                outputText += "{username: '" + task3File.next() + "', count: " + task3File.next() + "},";
+            }
+            outputText = outputText.substring(0, outputText.length()-1);
+            outputText += "];";
+            outputFile = new File("results/task3.js");
+            output = new PrintWriter(outputFile);
+            output.write(outputText);
+            output.close();
+            task3File.close();
 
         }
         catch(IOException ex) {
