@@ -33,18 +33,22 @@
 <script src="d3.js" charset="utf-8"></script>
 <script src="d3.layout.cloud.js"></script>
 <script src="d3.wordcloud.js"></script>
+<script src="results/task1.js"></script>
+
 
 <script>
   $(function() {
-    //   var rawFile = new XMLHttpRequest();
-    // rawFile.open("GET", "results/task1/part-r-00000.txt", false);
-    // rawFile.onreadystatechange = function ()
-    // {
-    //     if(rawFile.readyState === 4)
-    //     {
-    //         if(rawFile.status === 200 || rawFile.status == 0)
-    //         {
-    //             var words = rawFile.responseText.split(/(\r\n|\n)/g);
+    d3.wordcloud()
+        .size([500, 300])
+        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+        .selector('#graph1')
+        .words(task1Data)
+        .start();
+
+    // var reader = new FileReader();
+    //     reader.onload = function(){
+    //       var words = reader.result.split(/(\r\n|\n)/g);
+    //       //var words = rawFile.responseText.split(/(\r\n|\n)/g);
     //             words.forEach(function(item, index){
     //                 var values = item.split(" ");
     //                 words[index] = {text: values[0], size: values[1]};
@@ -55,27 +59,8 @@
     //             .selector('#graph1')
     //             .words(words)
     //             .start();
-    //         }
-    //     }
-    // }
-    // rawFile.send(null);
-
-    var reader = new FileReader();
-        reader.onload = function(){
-          var words = reader.result.split(/(\r\n|\n)/g);
-          //var words = rawFile.responseText.split(/(\r\n|\n)/g);
-                words.forEach(function(item, index){
-                    var values = item.split(" ");
-                    words[index] = {text: values[0], size: values[1]};
-                });
-                d3.wordcloud()
-                .size([500, 300])
-                .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
-                .selector('#graph1')
-                .words(words)
-                .start();
-        };
-        reader.readAsText(new File("results/task1/part-r-00000"));
+    //     };
+    //     reader.readAsText(new File("results/task1/part-r-00000"));
   });
 
 </script>

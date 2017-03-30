@@ -67,8 +67,7 @@ public class MainDriver {
             Scanner task1File = new Scanner(task1Data);
             String outputText = "var task1Data = [";
             while(task1File.hasNext()) {
-                String[] values = task1File.nextLine().split(" ");
-                outputText += "{text: '" + values[0] + "', size: " + values[1] + "},";
+                outputText += "{text: '" + task1File.next() + "', size: " + task1File.next() + "},";
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
