@@ -23,7 +23,7 @@ public class Task5Driver {
             FileInputFormat.addInputPath(job, new Path(inputPath));
             FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
-            job.setMapperClass(mappers.FindReplies.class);
+            job.setMapperClass(mappers.FindRepliesMapper.class);
             job.setReducerClass(reducers.FindTweetsReducer.class);
 
             job.setOutputKeyClass(LongWritable.class);

@@ -74,7 +74,7 @@ public class MainDriver {
             result4 = Task4Driver.run(args[0], args[1] + File.pathSeparator + "task4");
         if(!result5)
             result5 = Task5Driver.run(args[0], args[1] + File.pathSeparator + "task5");
-        // if(!result6)
-        //     result6 = Task6Driver.run(args[0], args[1] + File.pathSeparator + "task6");
+        if(!result6)
+            result6 = Task6Driver.run(args[0], args[1] + File.pathSeparator + "task6");
     }
 }
