@@ -77,6 +77,7 @@ public class MainDriver {
             output.close();
             
             System.out.println("Massaging Task 2 result...");
+            local = new Path("downloads/part-r-000002");
             hdfs = new Path(path + "/task2/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
             File task2Data = new File("downloads/part-r-000002");
@@ -94,6 +95,7 @@ public class MainDriver {
             task2File.close();
 
             System.out.println("Massaging Task 3 result...");
+            local = new Path("downloads/part-r-000003");
             hdfs = new Path(path + "/task3/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
             File task3Data = new File("downloads/part-r-000003");
