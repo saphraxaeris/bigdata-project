@@ -88,38 +88,56 @@
 
     //Task 3 presentation
     var colorIndex = 0;
-    var colors = ["#e7fdca", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
+    var colors = ["#b1c841", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
     var circles = [];
-    var x = 0;
-    var y = 0;
+    var x = 40;
+    var y = 40;
+    var bit = 0;
     task3Data.forEach(function(item){
-        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 15, color:colors[colorIndex]});
+        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 40, color:colors[colorIndex]});
         if(x < 800)
-            x += 30;
+            x += 90;
         else {
-            x = 0;
-            y += 30;
+            if(bit%2==0)
+                x = 80;
+            else
+                x = 40;
+            y += 90;
         }
         colorIndex = (colorIndex+1)%6;
     });
 
-    var svgContainer = d3.select("body").append("svg")
-                                    .attr("width", 200)
-                                    .attr("height", 200);
+    var svg = d3.select("#graph3").append("svg")
+    .attr("width", 800)
+    .attr("height", 800);
 
-    var circlesStuff = svgContainer.selectAll("circle")
-                          .data(jsonCircles)
-                          .enter()
-                          .append("circle");
+    var elem = svg.selectAll("g myCircleText")
+        .data(circles);
 
-    var circleAttributes = circlesStuff
-                       .attr("cx", function (d) { return d.x_axis; })
-                       .attr("cy", function (d) { return d.y_axis; })
-                       .attr("r", function (d) { return d.radius; })
-                       .style("fill", function(d) { return d.color; });
+    var elemEnter = elem.enter()
+	    .append("g")
+      .attr("class", "node-group")
+	    .attr("transform", function(d){return "translate("+d.x_axis+","+d.y_axis+")"});
+    
+    var circleInner = elemEnter.append("circle")
+	    .attr("r", function(d){return d.radius} )
+	    .attr("stroke", function(d) {return d.color;})
+	    .attr("fill", function(d) {return d.color;});
+
     elemEnter.append("text")
-        .attr("dx", function(d){return -20})
-        .text(function(d){return d.text})
+	    .text(function(d){return d.text})
+    .attr({
+      "text-anchor": "middle",
+      "font-size": function(d) { 
+        return d.radius/((d.radius*10)/100);
+        },
+      "dy": function(d) {
+        return d.radius/((d.radius*25)/100);
+      }
+    });
+
+
+
   });
 
 </script>
