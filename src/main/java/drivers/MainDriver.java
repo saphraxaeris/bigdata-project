@@ -67,24 +67,24 @@ public class MainDriver {
 
     private static void runTasks(String[] args) {
         try {
-            Job job = Job.getInstance();
+            Job job1 = Job.getInstance();
             if(!result1)
-                result1 = Task1Driver.run(args[0], args[1] + "/task1", job);
-            job = Job.getInstance();
+                result1 = Task1Driver.run(args[0], args[1] + "/task1", job1);
+            Job job2 = Job.getInstance();
             if(!result2)
-                result2 = Task2Driver.run(args[0], args[1] + "/task2", job);
-            job = Job.getInstance();
+                result2 = Task2Driver.run(args[0], args[1] + "/task2", job2);
+            Job job3 = Job.getInstance();
             if(!result3)
-                result3 = Task3Driver.run(args[0], args[1] + "/task3", job);
-            job = Job.getInstance();
+                result3 = Task3Driver.run(args[0], args[1] + "/task3", job3);
+            Job job4 = Job.getInstance();
             if(!result4)
-                result4 = Task4Driver.run(args[0], args[1] + "/task4", job);
-            job = Job.getInstance();
+                result4 = Task4Driver.run(args[0], args[1] + "/task4", job4);
+            Job job5 = Job.getInstance();
             if(!result5)
-                result5 = Task5Driver.run(args[0], args[1] + "/task5", job);
-            job = Job.getInstance();
+                result5 = Task5Driver.run(args[0], args[1] + "/task5", job5);
+            Job job6 = Job.getInstance();
             if(!result6)
-                result6 = Task6Driver.run(args[0], args[1] + "/task6", job);
+                result6 = Task6Driver.run(args[0], args[1] + "/task6", job6);
         }
         catch(IOException ex) {
             System.out.println("There was an error processing tasks.");
