@@ -52,13 +52,13 @@ public class MainDriver {
     private static void getData(String path) {
         try {
             Configuration conf = new Configuration();
-            conf.set("fs.defaultFS", "hdfs://136.145.215.153:50070/");
+            conf.set("fs.defaultFS", "hdfs://50070/");
             FileSystem hdfsFileSystem = FileSystem.get(conf);
             
             Path local = new Path("download/");
             Path hdfs = new Path(path + "/task1/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
-            
+
             //Massage Data for JS
 
         }
