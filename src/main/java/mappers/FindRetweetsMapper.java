@@ -1,0 +1,25 @@
+package mappers;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import twitter4j.Status;
+import twitter4j.TwitterException;
+import twitter4j.TwitterObjectFactory;
+import java.io.IOException;
+
+public class FindRetweetsMapper extends Mapper<LongWritable, Text, LongWritable, LongWritable> {
+    @Override
+    public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        String rawTweet = value.toString();
+        try {
+            Status status = TwitterObjectFactory.createStatus(rawTweet);
+            long tweetId = status.getId();
+            if(status.isRetweet()) {
+                long originalTweetId = status.getRetweetedStatus().getId();
+                context.write(new LongWritable(tweetId), new LongWritable(originalTweetId));
+            }
+        }
+        catch(TwitterException e) { /* Do nothing */ }
+    }
+}

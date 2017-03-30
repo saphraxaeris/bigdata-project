@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import drivers.Task1Driver;
 import drivers.Task2Driver;
+import drivers.Task3Driver;
+import drivers.Task4Driver;
 
 public class MainDriver {
     private static boolean result1 = false;
@@ -66,12 +68,12 @@ public class MainDriver {
             result1 = Task1Driver.run(args[0], args[1] + File.pathSeparator + "task1");
         if(!result2)
             result2 = Task2Driver.run(args[0], args[1] + File.pathSeparator + "task2");
-        // if(!result3)
-        //     result3 = Task3Driver.run(args[0], args[1] + File.pathSeparator + "task3");
-        // if(!result4)
-        //     result4 = Task4Driver.run(args[0], args[1] + File.pathSeparator + "task4");
-        // if(!result5)
-        //     result5 = Task5Driver.run(args[0], args[1] + File.pathSeparator + "task5");
+        if(!result3)
+            result3 = Task3Driver.run(args[0], args[1] + File.pathSeparator + "task3");
+        if(!result4)
+            result4 = Task4Driver.run(args[0], args[1] + File.pathSeparator + "task4");
+        if(!result5)
+            result5 = Task5Driver.run(args[0], args[1] + File.pathSeparator + "task5");
         // if(!result6)
         //     result6 = Task6Driver.run(args[0], args[1] + File.pathSeparator + "task6");
     }
