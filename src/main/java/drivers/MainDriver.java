@@ -1,6 +1,7 @@
 package drivers;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import org.apache.hadoop.mapreduce.Job;
@@ -51,15 +52,32 @@ public class MainDriver {
 
     private static void getData(String path) {
         try {
+            System.out.println("Connecting to HDFS...");
             Configuration conf = new Configuration();
-            conf.set("fs.defaultFS", "hdfs://50070/");
             FileSystem hdfsFileSystem = FileSystem.get(conf);
-            
             Path local = new Path("download/");
+
+            System.out.println("Getting Task 1 result...");
             Path hdfs = new Path(path + "/task1/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
 
             //Massage Data for JS
+            System.out.println("Massaging Task 1 result...");
+            File task1Data = new File("download/part-r-00000");
+            Scanner task1File = new Scanner(task1Data);
+            String outputText = "var task1Data = [";
+            while(task1File.hasNext()) {
+                String[] values = task1File.nextLine().split(" ");
+                outputText += "{text: '" + values[0] + "', size: " + values[1] + "},";
+            }
+            outputText = outputText.substring(0, outputText.length()-1);
+            outputText += "];";
+            task1File.close();
+            File outputFile = new File("results/task1.js");
+            PrintWriter output = new PrintWriter(outputFile);
+            output.write(outputText);
+            output.close();
+            
 
         }
         catch(IOException ex) {
