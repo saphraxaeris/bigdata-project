@@ -46,7 +46,7 @@ public class MainDriver {
                 if(!result6)
                     temp += "task6, ";
                 if(temp.length() > 0)
-                    temp = temp.substring(0, temp.length()-3);
+                    temp = temp.substring(0, temp.length()-2);
                 System.out.println("\n\nRetry task(s): " + temp + "? (y/n)");
                 boolean valid = false;
                 String reply = "";
@@ -70,14 +70,19 @@ public class MainDriver {
             Job job = Job.getInstance();
             if(!result1)
                 result1 = Task1Driver.run(args[0], args[1] + "/task1", job);
+            job = Job.getInstance();
             if(!result2)
                 result2 = Task2Driver.run(args[0], args[1] + "/task2", job);
+            job = Job.getInstance();
             if(!result3)
                 result3 = Task3Driver.run(args[0], args[1] + "/task3", job);
+            job = Job.getInstance();
             if(!result4)
                 result4 = Task4Driver.run(args[0], args[1] + "/task4", job);
+            job = Job.getInstance();
             if(!result5)
                 result5 = Task5Driver.run(args[0], args[1] + "/task5", job);
+            job = Job.getInstance();
             if(!result6)
                 result6 = Task6Driver.run(args[0], args[1] + "/task6", job);
         }

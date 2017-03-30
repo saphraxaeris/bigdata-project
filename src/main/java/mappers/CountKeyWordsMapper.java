@@ -17,22 +17,22 @@ public class CountKeyWordsMapper extends Mapper<LongWritable, Text, Text, IntWri
 
         try {
             Status status = TwitterObjectFactory.createStatus(rawTweet);
-            String[] tweetWords = status.getText().toLowerCase().split(" ");
+            String[] tweetWords = status.getText().toLowerCase().replace("#", "").split(" ");
 
             for(String word : tweetWords) {
-                if(word.contains("trump"))
+                if(word.equals("trump"))
                     context.write(new Text("Trump"), new IntWritable(1));
-                else if(word.contains("maga"))
+                else if(word.equals("maga"))
                     context.write(new Text("MAGA"), new IntWritable(1));
-                else if(word.contains("dictator"))
+                else if(word.equals("dictator"))
                     context.write(new Text("Dictator"), new IntWritable(1));
-                else if(word.contains("impeach"))
+                else if(word.equals("impeach"))
                     context.write(new Text("Impeach"), new IntWritable(1));
-                else if(word.contains("drain"))
+                else if(word.equals("drain"))
                     context.write(new Text("Drain"), new IntWritable(1));
-                else if(word.contains("swamp"))
+                else if(word.equals("swamp"))
                     context.write(new Text("Swamp"), new IntWritable(1));
-                else if(word.contains("change"))
+                else if(word.equals("change"))
                     context.write(new Text("Change"), new IntWritable(1));
             }
         }
