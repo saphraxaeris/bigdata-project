@@ -31,7 +31,7 @@ public class Task3Driver {
             return job.waitForCompletion(true);
         }
         catch(Exception ex) {
-            System.out.println("There was an error completing Task 3.");
+            System.out.println("There was an error completing Task 3:\n" + ex.getMessage());
             return false;
         }
     }

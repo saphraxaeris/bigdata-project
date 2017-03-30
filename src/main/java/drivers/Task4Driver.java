@@ -31,7 +31,7 @@ public class Task4Driver {
             return job.waitForCompletion(true);
         }
         catch(Exception ex) {
-            System.out.println("There was an error completing Task 4.");
+            System.out.println("There was an error completing Task 4:\n" + ex.getMessage());
             return false;
         }
     }

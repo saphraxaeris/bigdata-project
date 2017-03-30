@@ -32,7 +32,7 @@ public class Task2Driver {
             return job.waitForCompletion(true);
         }
         catch(Exception ex) {
-            System.out.println("There was an error completing Task 2.");
+            System.out.println("There was an error completing Task 2:\n" + ex.getMessage());
             return false;
         }
     }
