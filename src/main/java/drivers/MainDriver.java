@@ -106,7 +106,10 @@ public class MainDriver {
             Scanner task3File = new Scanner(task3Data);
             outputText = "var task3Data = [";
             while(task3File.hasNext()) {
-                outputText += "{username: '" + task3File.next() + "', count: " + task3File.next() + "},";
+                 String text = task2File.next();
+                String size = task2File.next();
+                outputText += "{username: '" + text + "', count: " + size + "},";
+                System.out.println(text + " " + size);
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
