@@ -87,6 +87,12 @@ public class MainDriver {
             while(task2File.hasNext()) {
                 String text = task2File.next();
                 String size = task2File.next();
+                try {
+                    Integer.parseInt(size);
+                }
+                catch(Exception ex) {
+                    size = task2File.next();
+                }
                 outputText += "{text: '" + text + "', size: " + size + "},";
                 System.out.println(text + " " + size);
             }
@@ -106,8 +112,14 @@ public class MainDriver {
             Scanner task3File = new Scanner(task3Data);
             outputText = "var task3Data = [";
             while(task3File.hasNext()) {
-                 String text = task2File.next();
-                String size = task2File.next();
+                 String text = task3File.next();
+                String size = task3File.next();
+                try {
+                    Integer.parseInt(size);
+                }
+                catch(Exception ex) {
+                    size = task3File.next();
+                }
                 outputText += "{username: '" + text + "', count: " + size + "},";
                 System.out.println(text + " " + size);
             }
