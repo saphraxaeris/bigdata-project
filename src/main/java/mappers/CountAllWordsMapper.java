@@ -21,7 +21,7 @@ public class CountAllWordsMapper extends Mapper<LongWritable, Text, Text, IntWri
             Status status = TwitterObjectFactory.createStatus(rawTweet);
             String text = status.getText().toLowerCase();
 
-            Pattern pt = Pattern.compile("[^a-zA-Z0-9]");
+            Pattern pt = Pattern.compile("^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$");
             Matcher match= pt.matcher(text);
             while(match.find())
             {
