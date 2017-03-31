@@ -83,6 +83,7 @@ public class MainDriver {
             File task2Data = new File("downloads/part-r-00000");
             Scanner task2File = new Scanner(task2Data);
             outputText = "var task2Data = [";
+            task2File.next();
             while(task2File.hasNext()) {
                 String text = task2File.next();
                 String size = task2File.next();
