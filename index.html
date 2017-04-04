@@ -52,7 +52,9 @@ path.link {
     <div class="row well" style="margin-top: 20px;">
         <div class="col-md-12">
             <h1 style="border-bottom: 1px solid dimgray;">Task 2</h1>
-            <p id="task2Text" style="font-size: 1.8rem"></p>
+            <p id="task2Text" style="font-size: 1.8rem">
+                There was a problem parsing and massaging the data from Task 2 :C
+            </p>
             <div id="graph2"></div>
         </div>
     </div>
@@ -99,10 +101,10 @@ path.link {
 <script src="d3.layout.cloud.js"></script>
 <script src="d3.wordcloud.js"></script>
 <script src="results/task1.js"></script>
-<script src="results/task2.js"></script>
+<!--<script src="results/task2.js"></script>-->
 <script src="results/task3.js"></script>
-<script src="results/task4.js"></script>
-<script src="results/task5.js"></script>
+<!--<script src="results/task4.js"></script>
+<script src="results/task5.js"></script>-->
 <script src="results/task6.js"></script>
 
 <script>
@@ -164,7 +166,7 @@ path.link {
         colorIndex = (colorIndex+1)%6;
         total++;
     });
-    $('#task3Text').text("Distinct Screen Names: " + total);
+    $('#task3Text').text("Distinct Screen Names: " + totalData);
     var svg = d3.select("#graph3").append("svg")
     .attr("width", 42700)
     .attr("height", 21800);
@@ -208,25 +210,25 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("#graph4").append("svg")
-    .attr("width", width + margin.left + margin.right)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// var svg = d3.select("#graph4").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//   .append("g")
+//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-jsonTest.x0 = 0;
-  jsonTest.y0 = 0;
-  update(root = jsonTest, "#graph4 > svg");
+// jsonTest.x0 = 0;
+//   jsonTest.y0 = 0;
+//   update(root = jsonTest, "#graph4 > svg");
 
 
     //Task 5 presentation
-var svg = d3.select("#graph5").append("svg")
-    .attr("width", width + margin.left + margin.right)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// var svg = d3.select("#graph5").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//   .append("g")
+//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-task5Data.x0 = 0;
-  task5Data.y0 = 0;
-  update(root = task5Data, "#graph5 > svg");
+// task5Data.x0 = 0;
+//   task5Data.y0 = 0;
+//   update(root = task5Data, "#graph5 > svg");
 
     //Task 6 presentation
 
@@ -241,7 +243,6 @@ task6Data.x0 = 0;
 
 function update(source, selector) {
 
-  // Compute the flattened node list. TODO use d3.layout.hierarchy.
   var nodes = tree.nodes(root);
 
   var height = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
