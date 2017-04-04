@@ -26,7 +26,7 @@ public class MainDriver {
         System.out.println("\n\nRan all jobs...");
 
         //Get Result Data
-        if(args[3].toLowerCase().equals("true")) {
+        if(args[2].toLowerCase().equals("true")) {
                 getData(args[1]);
                 System.out.println("\n\nRan massagers...");
             }
