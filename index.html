@@ -131,17 +131,17 @@ path.link {
     $('#task1Text').text(text);
     
     //Task 2 presentation
-    d3.wordcloud()
-        .size([800, 800])
-        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
-        .selector('#graph2')
-        .words(task2Data)
-        .start();
-    text = "";
-    task2Data.forEach(function(item){
-        text += item.text + ": " + item.size + ", ";
-    });
-    $('#task2Text').text(text);
+    // d3.wordcloud()
+    //     .size([800, 800])
+    //     .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+    //     .selector('#graph2')
+    //     .words(task2Data)
+    //     .start();
+    // text = "";
+    // task2Data.forEach(function(item){
+    //     text += item.text + ": " + item.size + ", ";
+    // });
+    // $('#task2Text').text(text);
 
     //Task 3 presentation
     var colorIndex = 0;
