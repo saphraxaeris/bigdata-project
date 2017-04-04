@@ -144,7 +144,7 @@ public class MainDriver {
         //     hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
         //     File task4Data = new File("downloads/part-r-00000");
         //     Scanner task4File = new Scanner(task4Data);
-        //     outputText = "var task4Data = { name: 'Retweets, children: [";
+        //     outputText = "var task4Data = { name: 'Retweets', children: [";
         //     while(task4File.hasNext()) {
         //         String text = task4File.next();
         //         String[] ids = task4File.next().split(",");
@@ -169,7 +169,7 @@ public class MainDriver {
         //     hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
         //     File task5Data = new File("downloads/part-r-00000");
         //     Scanner task5File = new Scanner(task5Data);
-        //     outputText = "var task5Data = { name: 'Replies, children: [";
+        //     outputText = "var task5Data = { name: 'Replies', children: [";
         //     while(task5File.hasNext()) {
         //         String text = task5File.next();
         //         String[] ids = task5File.next().split(",");
@@ -194,7 +194,7 @@ public class MainDriver {
         //     hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
         //     File task6Data = new File("downloads/part-r-00000");
         //     Scanner task6File = new Scanner(task6Data);
-        //     outputText = "var task6Data = { name: 'Tweets, children: [";
+        //     outputText = "var task6Data = { name: 'Tweets', children: [";
         //     while(task6File.hasNext()) {
         //         String text = task6File.next();
         //         String[] ids = task6File.next().split(",");
