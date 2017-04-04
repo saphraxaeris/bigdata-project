@@ -21,7 +21,7 @@ public class MainDriver {
         }
 
          //Run Tasks
-         //runTasks(args);
+         runTasks(args);
 
         System.out.println("\n\nRan all jobs...");
 
@@ -149,7 +149,7 @@ public class MainDriver {
         //         String text = task4File.next();
         //         String[] ids = task4File.next().split(",");
 
-        //         outputText += "{name: 'ID: " + text + "', children: [";
+        //         outputText += "{name: 'ID': ''" + text + "', children: [";
         //         for(String id : ids) {
         //             outputText += "{name: '"+ id +"'},";
         //         }
@@ -174,7 +174,7 @@ public class MainDriver {
         //         String text = task5File.next();
         //         String[] ids = task5File.next().split(",");
 
-        //         outputText += "{name: 'ID: " + text + "', children: [";
+        //         outputText += "{name: 'ID': ''" + text + "', children: [";
         //         for(String id : ids) {
         //             outputText += "{name: '"+ id +"'},";
         //         }
@@ -199,7 +199,7 @@ public class MainDriver {
         //         String text = task6File.next();
         //         String[] ids = task6File.next().split(",");
 
-        //         outputText += "{name: 'ID: " + text + "', children: [";
+        //         outputText += "{name: 'ID': ''" + text + "', children: [";
         //         for(String id : ids) {
         //             outputText += "{name: '"+ id +"'},";
         //         }
