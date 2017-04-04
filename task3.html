@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+.node rect {
+  cursor: pointer;
+  fill: #fff;
+  fill-opacity: .5;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+path.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+</style>
+
+  <title>Big Data Project 1 - Task 3</title>
+
+  <!-- META/CSS Start -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<link rel="stylesheet" type="text/css" href="profile.css">-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- META/CSS End -->
+</head>
+
+<body style="background-color: #ddd;">
+
+<header class="header">
+
+<div class="container">
+
+   
+
+    <div class="row well" style="margin-top: 20px;">
+        <div class="col-md-12">
+            <h1 style="border-bottom: 1px solid dimgray;">Task 3</h1>
+            <p id="task3Text" style="font-size: 1.8rem"></p>
+            <div id="graph3" style="height:800px; overflow: scroll;"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Scripts Start -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="d3.js" charset="utf-8"></script>
+<script src="d3.layout.cloud.js"></script>
+<script src="d3.wordcloud.js"></script>
+<script src="results/task3.js"></script>
+
+
+<script>
+  $(function() {
+  
+    //Task 3 presentation
+    var colorIndex = 0;
+    var colors = ["#b1c841", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
+    var circles = [];
+    var x = 50;
+    var y = 50;
+    var bit = 0;
+    var total = 0;
+    task3Data.forEach(function(item){
+        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 50, color:colors[colorIndex]});
+        if(x < 42520)
+            x += 110;
+        else {
+            if(bit%2==0)
+                x = 100;
+            else
+                x =50;
+            y += 100;
+            bit++;
+        }
+        colorIndex = (colorIndex+1)%6;
+        total++;
+    });
+    $('#task3Text').text("Distinct Screen Names: " + totalData);
+    var svg = d3.select("#graph3").append("svg")
+    .attr("width", 42700)
+    .attr("height", 21800);
+
+    var elem = svg.selectAll("g myCircleText")
+        .data(circles);
+
+    var elemEnter = elem.enter()
+	    .append("g")
+        .attr("class", "node-group")
+	    .attr("transform", function(d){return "translate("+d.x_axis+","+d.y_axis+")"});
+    
+    var circleInner = elemEnter.append("circle")
+        .attr("class", "user-circle")
+	    .attr("r", function(d){return d.radius} )
+	    .attr("stroke", function(d) {return d.color;})
+	    .attr("fill", function(d) {return d.color;});
+
+    elemEnter.append("text")
+	    .text(function(d){return d.text})
+        .attr("class", "user-text")
+    .attr({
+      "text-anchor": "middle",
+      "font-size": 13,
+      "dy": 6
+    });
+
+  });
+
+</script>
+<!-- Scripts End -->
+
+</body>
+
+</html>
