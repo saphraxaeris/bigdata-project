@@ -15,15 +15,15 @@ import drivers.Task4Driver;
 
 public class MainDriver {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("Usage: <input path> <output directory>");
-            System.exit(-1);
-        }
+        // if (args.length != 2) {
+        //     System.err.println("Usage: <input path> <output directory>");
+        //     System.exit(-1);
+        // }
 
-        //Run Tasks
-        runTasks(args);
+        // //Run Tasks
+        // runTasks(args);
 
-        System.out.println("\n\nRan all jobs...");
+        // System.out.println("\n\nRan all jobs...");
 
         //Get Result Data
         getData(args[1]);
@@ -56,14 +56,31 @@ public class MainDriver {
             Configuration conf = new Configuration();
             FileSystem hdfsFileSystem = FileSystem.get(conf);
             Path local = new Path("downloads/part-r-00000");
-            
             Path hdfs;
+            String outputText;
             File outputFile;
             PrintWriter output;
-            String outputText;
 
+            // System.out.println("Getting Task 1 result...");
+            // Path hdfs = new Path(path + "/task1/part-r-00000");
+            // hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
+
+            // System.out.println("Massaging Task 1 result...");
+            // File task1Data = new File("downloads/part-r-00000");
+            // Scanner task1File = new Scanner(task1Data);
+            // String outputText = "var task1Data = [";
+            // while(task1File.hasNext()) {
+            //     outputText += "{text: '" + task1File.next() + "', size: " + task1File.next() + "},";
+            // }
+            // outputText = outputText.substring(0, outputText.length()-1);
+            // outputText += "];";
+            // task1File.close();
+            // File outputFile = new File("results/task1.js");
+            // PrintWriter output = new PrintWriter(outputFile);
+            // output.write(outputText);
+            // output.close();
+            
             System.out.println("Massaging Task 2 result...");
-            //local = new Path("downloads/part-r-000002");
             hdfs = new Path(path + "/task2/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
             File task2Data = new File("downloads/part-r-00000");
@@ -90,8 +107,33 @@ public class MainDriver {
             output.close();
             task2File.close();
 
-            System.out.println("Massaging Task 4 result...");
-            //local = new Path("downloads/part-r-000002");
+            System.out.println("Massaging Task 3 result...");
+            hdfs = new Path(path + "/task3/part-r-00000");
+            hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
+            File task3Data = new File("downloads/part-r-00000");
+            Scanner task3File = new Scanner(task3Data);
+            outputText = "var task3Data = [";
+            while(task3File.hasNext()) {
+                 String text = task3File.next();
+                String size = task3File.next();
+                try {
+                    Integer.parseInt(size);
+                }
+                catch(Exception ex) {
+                    size = task3File.next();
+                }
+                outputText += "{username: '" + text + "', count: " + size + "},";
+                System.out.println(text + " " + size);
+            }
+            outputText = outputText.substring(0, outputText.length()-1);
+            outputText += "];";
+            outputFile = new File("results/task3.js");
+            output = new PrintWriter(outputFile);
+            output.write(outputText);
+            output.close();
+            task3File.close();
+
+             System.out.println("Massaging Task 4 result...");
             hdfs = new Path(path + "/task4/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
             File task4Data = new File("downloads/part-r-00000");
@@ -118,7 +160,6 @@ public class MainDriver {
             task4File.close();
 
            System.out.println("Massaging Task 5 result...");
-            //local = new Path("downloads/part-r-000002");
             hdfs = new Path(path + "/task5/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
             File task5Data = new File("downloads/part-r-00000");
@@ -145,7 +186,6 @@ public class MainDriver {
             task5File.close();
 
             System.out.println("Massaging Task 6 result...");
-            //local = new Path("downloads/part-r-000002");
             hdfs = new Path(path + "/task6/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
             File task6Data = new File("downloads/part-r-00000");
