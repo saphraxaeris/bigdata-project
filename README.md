@@ -6,7 +6,7 @@
 
 ## Running Drivers
 * To run all drivers use command `hadoop jar <jar location> <input file from hdfs> <output folder in hdfs> <true or false>`
-* * Last parameter is to run data massager on generated data. This will cause the program to take a long time while it creates the necessary files. A pre-computed version is alreaady included with the project.
+* * Last parameter is to run data massager on generated data. This will cause the program to take a long time while it creates the necessary files.
 
 ## Viewing Data
 * Open 'index.html' in a browser
