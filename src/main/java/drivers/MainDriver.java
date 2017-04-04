@@ -20,10 +20,10 @@ public class MainDriver {
         //     System.exit(-1);
         // }
 
-        // //Run Tasks
-        // runTasks(args);
+         //Run Tasks
+         runTasks(args);
 
-        // System.out.println("\n\nRan all jobs...");
+        System.out.println("\n\nRan all jobs...");
 
         //Get Result Data
         getData(args[1]);
