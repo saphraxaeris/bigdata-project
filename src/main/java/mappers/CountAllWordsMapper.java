@@ -21,7 +21,7 @@ public class CountAllWordsMapper extends Mapper<LongWritable, Text, Text, IntWri
             Status status = TwitterObjectFactory.createStatus(rawTweet);
             String text = status.getText().toLowerCase();
 
-            String[] tweetWords = text.replace("\n", "").replace("@", "").replace("\"", "").replace("#", "").split(" ");
+            String[] tweetWords = text.replace("\n", "").replace("@", "").replace("\"", "").replace("'", "").replace("#", "").split(" ");
             
             for(String word : tweetWords){
                 if(!stopWords.equals(word) && !word.contains("http"))

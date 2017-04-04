@@ -101,10 +101,10 @@ path.link {
 <script src="d3.layout.cloud.js"></script>
 <script src="d3.wordcloud.js"></script>
 <script src="results/task1.js"></script>
-<!--<script src="results/task2.js"></script>-->
+<script src="results/task2.js"></script>
 <script src="results/task3.js"></script>
-<!--<script src="results/task4.js"></script>
-<script src="results/task5.js"></script>-->
+<script src="results/task4.js"></script>
+<script src="results/task5.js"></script>
 <script src="results/task6.js"></script>
 
 <script>
@@ -131,17 +131,17 @@ path.link {
     $('#task1Text').text(text);
     
     //Task 2 presentation
-    // d3.wordcloud()
-    //     .size([800, 800])
-    //     .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
-    //     .selector('#graph2')
-    //     .words(task2Data)
-    //     .start();
-    // text = "";
-    // task2Data.forEach(function(item){
-    //     text += item.text + ": " + item.size + ", ";
-    // });
-    // $('#task2Text').text(text);
+    d3.wordcloud()
+        .size([800, 800])
+        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+        .selector('#graph2')
+        .words(task2Data)
+        .start();
+    text = "";
+    task2Data.forEach(function(item){
+        text += item.text + ": " + item.size + ", ";
+    });
+    $('#task2Text').text(text);
 
     //Task 3 presentation
     var colorIndex = 0;
@@ -210,25 +210,25 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
-// var svg = d3.select("#graph4").append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//   .append("g")
-//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select("#graph4").append("svg")
+    .attr("width", width + margin.left + margin.right)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// jsonTest.x0 = 0;
-//   jsonTest.y0 = 0;
-//   update(root = jsonTest, "#graph4 > svg");
+jsonTest.x0 = 0;
+  jsonTest.y0 = 0;
+  update(root = jsonTest, "#graph4 > svg");
 
 
     //Task 5 presentation
-// var svg = d3.select("#graph5").append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//   .append("g")
-//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select("#graph5").append("svg")
+    .attr("width", width + margin.left + margin.right)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// task5Data.x0 = 0;
-//   task5Data.y0 = 0;
-//   update(root = task5Data, "#graph5 > svg");
+task5Data.x0 = 0;
+  task5Data.y0 = 0;
+  update(root = task5Data, "#graph5 > svg");
 
     //Task 6 presentation
 
