@@ -21,7 +21,7 @@ public class MainDriver {
         // }
 
          //Run Tasks
-         runTasks(args);
+         //runTasks(args);
 
         System.out.println("\n\nRan all jobs...");
 
@@ -80,58 +80,58 @@ public class MainDriver {
             // output.write(outputText);
             // output.close();
             
-            // System.out.println("Massaging Task 2 result...");
-            // hdfs = new Path(path + "/task2/part-r-00000");
-            // hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
-            // File task2Data = new File("downloads/part-r-00000");
-            // Scanner task2File = new Scanner(task2Data);
-            // outputText = "var task2Data = [";
-            // task2File.next();
-            // while(task2File.hasNext()) {
-            //     String text = task2File.next();
-            //     String size = task2File.next();
-            //     try {
-            //         Integer.parseInt(size);
-            //     }
-            //     catch(Exception ex) {
-            //         size = task2File.next();
-            //     }
-            //     outputText += "{text: '" + text + "', size: " + size + "},";
-            //     System.out.println(text + " " + size);
-            // }
-            // outputText = outputText.substring(0, outputText.length()-1);
-            // outputText += "];";
-            // outputFile = new File("results/task2.js");
-            // output = new PrintWriter(outputFile);
-            // output.write(outputText);
-            // output.close();
-            // task2File.close();
-
-            System.out.println("Massaging Task 3 result...");
-            hdfs = new Path(path + "/task3/part-r-00000");
+            System.out.println("Massaging Task 2 result...");
+            hdfs = new Path(path + "/task2/part-r-00000");
             hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
-            File task3Data = new File("downloads/part-r-00000");
-            Scanner task3File = new Scanner(task3Data);
-            outputText = "var task3Data = [";
-            while(task3File.hasNext()) {
-                 String text = task3File.next();
-                String size = task3File.next();
+            File task2Data = new File("downloads/part-r-00000");
+            Scanner task2File = new Scanner(task2Data);
+            outputText = "var task2Data = [";
+            task2File.next();
+            while(task2File.hasNext()) {
+                String text = task2File.next();
+                String size = task2File.next();
                 try {
                     Integer.parseInt(size);
                 }
                 catch(Exception ex) {
-                    size = task3File.next();
+                    size = task2File.next();
                 }
-                outputText += "{username: '" + text + "', count: " + size + "},";
+                outputText += "{text: '" + text + "', size: " + size + "},";
                 System.out.println(text + " " + size);
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
-            outputFile = new File("results/task3.js");
+            outputFile = new File("results/task2.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
             output.close();
-            task3File.close();
+            task2File.close();
+
+            // System.out.println("Massaging Task 3 result...");
+            // hdfs = new Path(path + "/task3/part-r-00000");
+            // hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
+            // File task3Data = new File("downloads/part-r-00000");
+            // Scanner task3File = new Scanner(task3Data);
+            // outputText = "var task3Data = [";
+            // while(task3File.hasNext()) {
+            //      String text = task3File.next();
+            //     String size = task3File.next();
+            //     try {
+            //         Integer.parseInt(size);
+            //     }
+            //     catch(Exception ex) {
+            //         size = task3File.next();
+            //     }
+            //     outputText += "{username: '" + text + "', count: " + size + "},";
+            //     System.out.println(text + " " + size);
+            // }
+            // outputText = outputText.substring(0, outputText.length()-1);
+            // outputText += "];";
+            // outputFile = new File("results/task3.js");
+            // output = new PrintWriter(outputFile);
+            // output.write(outputText);
+            // output.close();
+            // task3File.close();
 
              System.out.println("Massaging Task 4 result...");
             hdfs = new Path(path + "/task4/part-r-00000");
@@ -139,7 +139,6 @@ public class MainDriver {
             File task4Data = new File("downloads/part-r-00000");
             Scanner task4File = new Scanner(task4Data);
             outputText = "var task4Data = { name: 'Retweets, children: [";
-            task4File.next();
             while(task4File.hasNext()) {
                 String text = task4File.next();
                 String[] ids = task4File.next().split(",");
@@ -149,7 +148,7 @@ public class MainDriver {
                     outputText += "{name: '"+ id +"'},";
                 }
                 outputText += "]}]};";
-                System.out.print("Still working...");
+                System.out.println("Still working on task 4...");
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
@@ -165,7 +164,6 @@ public class MainDriver {
             File task5Data = new File("downloads/part-r-00000");
             Scanner task5File = new Scanner(task5Data);
             outputText = "var task5Data = { name: 'Replies, children: [";
-            task5File.next();
             while(task5File.hasNext()) {
                 String text = task5File.next();
                 String[] ids = task5File.next().split(",");
@@ -175,7 +173,7 @@ public class MainDriver {
                     outputText += "{name: '"+ id +"'},";
                 }
                 outputText += "]}]};";
-                System.out.print("Still working...");
+                System.out.println("Still working on task 5...");
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
@@ -191,7 +189,6 @@ public class MainDriver {
             File task6Data = new File("downloads/part-r-00000");
             Scanner task6File = new Scanner(task6Data);
             outputText = "var task6Data = { name: 'Tweets, children: [";
-            task6File.next();
             while(task6File.hasNext()) {
                 String text = task6File.next();
                 String[] ids = task6File.next().split(",");
@@ -201,7 +198,7 @@ public class MainDriver {
                     outputText += "{name: '"+ id +"'},";
                 }
                 outputText += "]}]};";
-                System.out.print("Still working...");
+                System.out.println("Still working on task 6...");
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
