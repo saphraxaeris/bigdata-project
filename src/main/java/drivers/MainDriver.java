@@ -80,32 +80,32 @@ public class MainDriver {
             // output.write(outputText);
             // output.close();
             
-            System.out.println("Massaging Task 2 result...");
-            hdfs = new Path(path + "/task2/part-r-00000");
-            hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
-            File task2Data = new File("downloads/part-r-00000");
-            Scanner task2File = new Scanner(task2Data);
-            outputText = "var task2Data = [";
-            task2File.next();
-            while(task2File.hasNext()) {
-                String text = task2File.next();
-                String size = task2File.next();
-                try {
-                    Integer.parseInt(size);
-                }
-                catch(Exception ex) {
-                    size = task2File.next();
-                }
-                outputText += "{text: '" + text + "', size: " + size + "},";
-                System.out.println(text + " " + size);
-            }
-            outputText = outputText.substring(0, outputText.length()-1);
-            outputText += "];";
-            outputFile = new File("results/task2.js");
-            output = new PrintWriter(outputFile);
-            output.write(outputText);
-            output.close();
-            task2File.close();
+            // System.out.println("Massaging Task 2 result...");
+            // hdfs = new Path(path + "/task2/part-r-00000");
+            // hdfsFileSystem.copyToLocalFile(false, hdfs, local, true);
+            // File task2Data = new File("downloads/part-r-00000");
+            // Scanner task2File = new Scanner(task2Data);
+            // outputText = "var task2Data = [";
+            // task2File.next();
+            // while(task2File.hasNext()) {
+            //     String text = task2File.next();
+            //     String size = task2File.next();
+            //     try {
+            //         Integer.parseInt(size);
+            //     }
+            //     catch(Exception ex) {
+            //         size = task2File.next();
+            //     }
+            //     outputText += "{text: '" + text + "', size: " + size + "},";
+            //     System.out.println(text + " " + size);
+            // }
+            // outputText = outputText.substring(0, outputText.length()-1);
+            // outputText += "];";
+            // outputFile = new File("results/task2.js");
+            // output = new PrintWriter(outputFile);
+            // output.write(outputText);
+            // output.close();
+            // task2File.close();
 
             System.out.println("Massaging Task 3 result...");
             hdfs = new Path(path + "/task3/part-r-00000");
