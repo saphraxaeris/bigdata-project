@@ -29,7 +29,7 @@ public class CountAllWordsMapper extends Mapper<LongWritable, Text, Text, IntWri
                 text=text.replaceAll("\\"+s, "");
             }
 
-            String[] tweetWords = text.replace("\n", " ").replace("#", "").split(" ");
+            String[] tweetWords = text.replace("\n", "").replace("#", "").split(" ");
             
             for(String word : tweetWords){
                 if(!stopWords.equals(word) && !word.contains("http"))
