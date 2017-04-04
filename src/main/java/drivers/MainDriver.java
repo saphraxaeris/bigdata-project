@@ -95,12 +95,12 @@ public class MainDriver {
                 String size = task2File.next();
                 try {
                     Integer.parseInt(size);
+                    outputText += "{text: '" + text + "', size: " + size + "},\n";
+                    System.out.println(text + " " + size);
                 }
                 catch(Exception ex) {
-                    size = task2File.next();
+                    
                 }
-                outputText += "{text: '" + text + "', size: " + size + "},\n";
-                System.out.println(text + " " + size);
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
@@ -153,11 +153,10 @@ public class MainDriver {
                 for(String id : ids) {
                     outputText += "{name: '"+ id +"'},\n";
                 }
+                outputText += "]},";
                 System.out.println("Still working on task 4...");
             }
-            outputText += "]}]};";
-            outputText = outputText.substring(0, outputText.length()-1);
-            outputText += "];";
+            outputText += "]};";
             outputFile = new File("results/task4.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
@@ -178,11 +177,11 @@ public class MainDriver {
                 for(String id : ids) {
                     outputText += "{name: '"+ id +"'},\n";
                 }
+                outputText += "]},";
                 System.out.println("Still working on task 5...");
             }
-            outputText += "]}]};";
+            outputText += "]};";
             outputText = outputText.substring(0, outputText.length()-1);
-            outputText += "];";
             outputFile = new File("results/task5.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
@@ -203,11 +202,11 @@ public class MainDriver {
                 for(String id : ids) {
                     outputText += "{name: '"+ id +"'},\n";
                 }
+                outputText += "]},";
                 System.out.println("Still working on task 6...");
             }
-            outputText += "]}]};";
+            outputText += "]};";
             outputText = outputText.substring(0, outputText.length()-1);
-            outputText += "];";
             outputFile = new File("results/task6.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
