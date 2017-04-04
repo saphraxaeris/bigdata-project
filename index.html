@@ -38,7 +38,7 @@
         <div class="col-md-12">
             <h1 style="border-bottom: 1px solid dimgray;">Task 3</h1>
             <p id="task3Text" style="font-size: 1.8rem"></p>
-            <div id="graph3"></div>
+            <div id="graph3" style="height:800px; overflow: scroll;"></div>
         </div>
     </div>
 
@@ -52,7 +52,7 @@
 <script src="d3.layout.cloud.js"></script>
 <script src="d3.wordcloud.js"></script>
 <script src="results/task1.js"></script>
-<script src="results/task2.js"></script>
+<!--<script src="results/task2.js"></script>-->
 <script src="results/task3.js"></script>
 <!--<script src="results/task4.js"></script>
 <script src="results/task5.js"></script>
@@ -61,82 +61,91 @@
 <script>
   $(function() {
     //Task 1 presentation
+    var copiedObject = jQuery.extend(true, {}, task1Data);
+
+    var text = "";
+    var index = 0;
+    
+    task1Data.forEach(function(item){
+        item.size = copiedObject[index].size;
+        index++;
+        text += item.text + ": " + item.size + ", ";
+    });
+    
+    console.log(task1Data);
+    
     d3.wordcloud()
         .size([800, 800])
         .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
         .selector('#graph1')
         .words(task1Data)
         .start();
-    var text = "";
-    task1Data.forEach(function(item){
-        text += item.text + ": " + item.size + ", ";
-    });
-    $('#task1Text').text(text);
 
+    $('#task1Text').text(text);
+    
     //Task 2 presentation
-    d3.wordcloud()
-        .size([800, 800])
-        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
-        .selector('#graph2')
-        .words(task2Data)
-        .start();
-    text = "";
-    task2Data.forEach(function(item){
-        text += item.text + ": " + item.size + ", ";
-    });
-    $('#task2Text').text(text);
+    // d3.wordcloud()
+    //     .size([800, 800])
+    //     .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+    //     .selector('#graph2')
+    //     .words(task2Data)
+    //     .start();
+    // text = "";
+    // task2Data.forEach(function(item){
+    //     text += item.text + ": " + item.size + ", ";
+    // });
+    // $('#task2Text').text(text);
 
     //Task 3 presentation
     var colorIndex = 0;
     var colors = ["#b1c841", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
     var circles = [];
-    var x = 40;
-    var y = 40;
+    var x = 50;
+    var y = 50;
     var bit = 0;
+    var total = 0;
     task3Data.forEach(function(item){
-        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 40, color:colors[colorIndex]});
-        if(x < 800)
-            x += 90;
+        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 50, color:colors[colorIndex]});
+        if(x < 42520)
+            x += 110;
         else {
             if(bit%2==0)
-                x = 80;
+                x = 100;
             else
-                x = 40;
-            y += 90;
+                x =50;
+            y += 100;
+            bit++;
         }
         colorIndex = (colorIndex+1)%6;
+        total++;
     });
-
+    $('#task3Text').text("Distinct Screen Names: " + total);
     var svg = d3.select("#graph3").append("svg")
-    .attr("width", 800)
-    .attr("height", 800);
+    .attr("width", 42700)
+    .attr("height", 21800);
 
     var elem = svg.selectAll("g myCircleText")
         .data(circles);
 
     var elemEnter = elem.enter()
 	    .append("g")
-      .attr("class", "node-group")
+        .attr("class", "node-group")
 	    .attr("transform", function(d){return "translate("+d.x_axis+","+d.y_axis+")"});
     
     var circleInner = elemEnter.append("circle")
+        .attr("class", "user-circle")
 	    .attr("r", function(d){return d.radius} )
 	    .attr("stroke", function(d) {return d.color;})
 	    .attr("fill", function(d) {return d.color;});
 
     elemEnter.append("text")
 	    .text(function(d){return d.text})
+        .attr("class", "user-text")
     .attr({
       "text-anchor": "middle",
-      "font-size": function(d) { 
-        return d.radius/((d.radius*10)/100);
-        },
-      "dy": function(d) {
-        return d.radius/((d.radius*25)/100);
-      }
+      "font-size": 13,
+      "dy": 6
     });
-
-
 
   });
 
