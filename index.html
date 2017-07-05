@@ -101,11 +101,11 @@ path.link {
 <script src="d3.layout.cloud.js"></script>
 <script src="d3.wordcloud.js"></script>
 <script src="results/task1.js"></script>
-<!--<script src="results/task2.js"></script>-->
+<script src="results/task2.js"></script>
 <script src="results/task3.js"></script>
-<!--<script src="results/task4.js"></script>
-<script src="results/task5.js"></script>-->
-<script src="results/task6.js"></script>
+<script src="results/task4.js"></script>
+<script src="results/task5.js"></script>
+<!--<script src="results/task6.js"></script>-->
 
 <script>
   $(function() {
@@ -144,55 +144,55 @@ path.link {
     // $('#task2Text').text(text);
 
     //Task 3 presentation
-    var colorIndex = 0;
-    var colors = ["#b1c841", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
-    var circles = [];
-    var x = 50;
-    var y = 50;
-    var bit = 0;
-    var total = 0;
-    task3Data.forEach(function(item){
-        circles.push({text: item.username, x_axis: x, y_axis: y, radius: 50, color:colors[colorIndex]});
-        if(x < 42520)
-            x += 110;
-        else {
-            if(bit%2==0)
-                x = 100;
-            else
-                x =50;
-            y += 100;
-            bit++;
-        }
-        colorIndex = (colorIndex+1)%6;
-        total++;
-    });
-    $('#task3Text').text("Distinct Screen Names: " + totalData);
-    var svg = d3.select("#graph3").append("svg")
-    .attr("width", 42700)
-    .attr("height", 21800);
+    // var colorIndex = 0;
+    // var colors = ["#b1c841", "#c85e45", "#acc5d1", "#bd5cc1", "#4e72bf", "#296667"];
+    // var circles = [];
+    // var x = 50;
+    // var y = 50;
+    // var bit = 0;
+    // var total = 0;
+    // task3Data.forEach(function(item){
+    //     circles.push({text: item.username, x_axis: x, y_axis: y, radius: 50, color:colors[colorIndex]});
+    //     if(x < 42520)
+    //         x += 110;
+    //     else {
+    //         if(bit%2==0)
+    //             x = 100;
+    //         else
+    //             x =50;
+    //         y += 100;
+    //         bit++;
+    //     }
+    //     colorIndex = (colorIndex+1)%6;
+    //     total++;
+    // });
+    // $('#task3Text').text("Distinct Screen Names: " + totalData);
+    // var svg = d3.select("#graph3").append("svg")
+    // .attr("width", 42700)
+    // .attr("height", 21800);
 
-    var elem = svg.selectAll("g myCircleText")
-        .data(circles);
+    // var elem = svg.selectAll("g myCircleText")
+    //     .data(circles);
 
-    var elemEnter = elem.enter()
-	    .append("g")
-        .attr("class", "node-group")
-	    .attr("transform", function(d){return "translate("+d.x_axis+","+d.y_axis+")"});
+    // var elemEnter = elem.enter()
+	//     .append("g")
+    //     .attr("class", "node-group")
+	//     .attr("transform", function(d){return "translate("+d.x_axis+","+d.y_axis+")"});
     
-    var circleInner = elemEnter.append("circle")
-        .attr("class", "user-circle")
-	    .attr("r", function(d){return d.radius} )
-	    .attr("stroke", function(d) {return d.color;})
-	    .attr("fill", function(d) {return d.color;});
+    // var circleInner = elemEnter.append("circle")
+    //     .attr("class", "user-circle")
+	//     .attr("r", function(d){return d.radius} )
+	//     .attr("stroke", function(d) {return d.color;})
+	//     .attr("fill", function(d) {return d.color;});
 
-    elemEnter.append("text")
-	    .text(function(d){return d.text})
-        .attr("class", "user-text")
-    .attr({
-      "text-anchor": "middle",
-      "font-size": 13,
-      "dy": 6
-    });
+    // elemEnter.append("text")
+	//     .text(function(d){return d.text})
+    //     .attr("class", "user-text")
+    // .attr({
+    //   "text-anchor": "middle",
+    //   "font-size": 13,
+    //   "dy": 6
+    // });
 
     //Task 4 presentation
     var margin = {top: 30, right: 20, bottom: 30, left: 20},

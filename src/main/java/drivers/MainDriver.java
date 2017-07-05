@@ -99,7 +99,7 @@ public class MainDriver {
                 catch(Exception ex) {
                     size = task2File.next();
                 }
-                outputText += "{text: '" + text + "', size: " + size + "},";
+                outputText += "{text: '" + text.Replace('"', '').Replace("'", "") + "', size: " + size + "},";
                 System.out.println(text + " " + size);
             }
             outputText = outputText.substring(0, outputText.length()-1);
@@ -149,7 +149,7 @@ public class MainDriver {
                 String text = task4File.next();
                 String[] ids = task4File.next().split(",");
 
-                outputText += "{name: 'ID': ''" + text + "', children: [";
+                outputText += "{name: 'ID': '" + text + "', children: [";
                 for(String id : ids) {
                     outputText += "{name: '"+ id +"'},";
                 }
@@ -174,7 +174,7 @@ public class MainDriver {
                 String text = task5File.next();
                 String[] ids = task5File.next().split(",");
 
-                outputText += "{name: 'ID': ''" + text + "', children: [";
+                outputText += "{name: 'ID': '" + text.Replace('"', '').Replace("'", "") + "', children: [";
                 for(String id : ids) {
                     outputText += "{name: '"+ id +"'},";
                 }
@@ -199,7 +199,7 @@ public class MainDriver {
                 String text = task6File.next();
                 String[] ids = task6File.next().split(",");
 
-                outputText += "{name: 'ID': ''" + text + "', children: [";
+                outputText += "{name: 'ID': '" + text.Replace('"', '').Replace("'", "") + "', children: [";
                 for(String id : ids) {
                     outputText += "{name: '"+ id +"'},";
                 }
