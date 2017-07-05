@@ -78,7 +78,7 @@ public class MainDriver {
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];\n";
             task1File.close();
-             outputFile = new File("results/task1.js");
+             outputFile = new File("/broecat/results2/task1.js");
              output = new PrintWriter(outputFile);
             output.write(outputText);
             output.close();
@@ -104,7 +104,7 @@ public class MainDriver {
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
-            outputFile = new File("results/task2.js");
+            outputFile = new File("/broecat/results2/task2.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
             output.close();
@@ -133,7 +133,7 @@ public class MainDriver {
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];\n";
             outputText += "var totalData = " + total + ";";
-            outputFile = new File("results/task3.js");
+            outputFile = new File("/broecat/results2/task3.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
             output.close();
@@ -183,7 +183,7 @@ public class MainDriver {
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
-            outputFile = new File("results/task5.js");
+            outputFile = new File("/broecat/results2/task5.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
             output.close();
@@ -208,7 +208,7 @@ public class MainDriver {
             }
             outputText = outputText.substring(0, outputText.length()-1);
             outputText += "];";
-            outputFile = new File("results/task6.js");
+            outputFile = new File("/broecat/results2/task6.js");
             output = new PrintWriter(outputFile);
             output.write(outputText);
             output.close();
